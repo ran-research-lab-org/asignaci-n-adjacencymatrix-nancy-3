@@ -4,8 +4,8 @@
 
 class Graph {
 private:
-    int numVertices;
-    std::vector<std::vector<int>> adjMatrix;
+    int numVertices;  //nodos
+    std::vector<std::vector<int>> adjMatrix; //arreglo dinamico de enteros
 
 public:
     // Crea un vector de 2D n x n
@@ -31,25 +31,46 @@ public:
     }
 
     // Implementar!! 
-    // Devuelve la cantidad de aristas
+    // Devuelve la cantidad total de aristas
+    //para matriz dinamica se necesita usar un for anidado para filas y columnas pero es n x n, es un cuadrado 
     int numEdges() const {
-        return 0;
+        int contador = 0;
+        for (int i = 0; i < numVertices; ++i) {
+            for (int j = 0; j < numVertices; ++j) {
+                if (adjMatrix[i][j] == 1){
+                    contador++; 
+                }
+            }
+        }
+        return contador;
     }
+        
+    
 
     // Completa esta función
-    // Devuelve el in-degree de un vertice
+    // Devuelve el in-degree de un vertice (cantidad total de artistas que apunta a un vertice en particular)
     int inDegree(int u) const {
         if (u < 0 || u >= numVertices)
             throw std::out_of_range("Vertice fuera de rango");
         else {
+            int count = 0;
+            for (int i = 0; i < numVertices; ++i) { // como estamos buscando un nodo de destino en particular ya no necesitamos recorrer todas las columnas sino que solo una en particular
+                if (adjMatrix[i][u]==1){ // las columnas son las q representan el nodo de destino osea a los q se apuntan 
+                    count++; //si encuentra 1 significa que se le apunta y el contador aumenta            
+                }
+                
+            }
         }
+        return count;
     }
+    
 
     // Completa esta función
     // Devuelve cierto si u es el nodo con mayor inDegree.
     // En caso de que haya varios nodos que tengan el mayor inDegree,
     // devuelve true si u es uno de ellos
     bool isInfluencer(int u) const  {
+        
     }
 };
 
