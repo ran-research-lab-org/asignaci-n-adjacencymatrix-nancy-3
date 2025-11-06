@@ -70,7 +70,18 @@ public:
     // En caso de que haya varios nodos que tengan el mayor inDegree,
     // devuelve true si u es uno de ellos
     bool isInfluencer(int u) const  {
-        
+        int countMax = 0;
+        for (int v = 0; v < numVertices; ++v){ //ahora recorremos vertice por vertice (nodo)
+            int aristas = inDegree(v);  // almacenamos la cantidad de aristas que apunta un vertice particular en la variable aristas
+            if (aristas > countMax){ //si la cantidad almacenada en aristas es mayor q a la de countMax (comparando vertice con vertice en cada iteración)
+                countMax = aristas; //almacenar mayor en countmax
+            }
+        }
+         if (inDegree(u)==countMax){ //si el vertice o nodo añadido como parametro tiene la cantidad aristas max 
+            return true;               //devuelve true
+            }else{
+                return false;
+            }
     }
 };
 
