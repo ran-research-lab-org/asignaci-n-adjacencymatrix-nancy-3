@@ -58,10 +58,10 @@ public:
                 if (adjMatrix[i][u]==1){ // las columnas son las q representan el nodo de destino osea a los q se apuntan 
                     count++; //si encuentra 1 significa que se le apunta y el contador aumenta            
                 }
-                
             }
+            return count;
         }
-        return count;
+        
     }
     
 
